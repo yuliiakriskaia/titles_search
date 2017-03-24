@@ -17,8 +17,10 @@ class BookIndexBase(object):
 class BookInvertedIndex(BookIndexBase):
     def __init__(self, file_path):
         self.file_path = file_path
+        self.data = None
 
     def initialize(self, books):
+        self.data = None
         inverted_index = {}
         for book in books:
             # get title keywords
@@ -34,6 +36,8 @@ class BookInvertedIndex(BookIndexBase):
             pickle.dump(inverted_index, inverted_index_file)
 
     def get_index_data(self):
-        with open(self.file_path, "rb") as inverted_index_file:
-            inverted_index_data = pickle.load(inverted_index_file)
-            return inverted_index_data
+        if not self.data:
+            with open(self.file_path, "rb") as inverted_index_file:
+                inverted_index_data = pickle.load(inverted_index_file)
+                self.data = inverted_index_data
+        return self.data

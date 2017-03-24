@@ -5,6 +5,6 @@ import './index.css';
 
 
 ReactDOM.render(
-  <BookSearch url="/" />,
+  <BookSearch url="/" perPage={5} />,
   document.getElementById('root')
 );
