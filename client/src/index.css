@@ -1,5 +1,43 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+html,body
+{
+    height: 100%;
 }
+
+header,footer,div
+{
+   width: 100%;
+}
+
+#root
+{
+    height: 100%;
+    margin: -64px 0 -30px;
+    padding: 67px 0 27px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow:auto;
+}
+
+header
+{
+    height: 64px;
+    background: #2b3643;
+    position: relative;
+    z-index:1;
+    color: white;
+    font-size: 24px;
+}
+
+footer
+{
+    height: 30px;
+    background: #0B243B;
+    position: relative;
+    z-index:1;
+    color: white;
+}
+
+a {
+    text-decoration: none !important;
+}
+

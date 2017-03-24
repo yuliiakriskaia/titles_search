@@ -20,13 +20,14 @@ class Searcher(object):
                     titles_ids += inverted_index[keyword]
             # score results
             for title_id in set(titles_ids):
-                title = self.book_data_source.get_title_by_id(title_id)
-                print(title)
+                title = self.book_data_source.get_book_information(title_id)["title"]
                 results.append((title_id, title, self.score_result(keywords_set, title)))
+
         return sorted(results, reverse=True, key=lambda t: t[2])
 
     def score_result(self, keywords_set, title):
         keywords = re.findall(r'\w+', title)
         title_set = set([keyword.lower() for keyword in keywords])
+
         return len(keywords_set.intersection(title_set))/float(len(keywords_set))
 
